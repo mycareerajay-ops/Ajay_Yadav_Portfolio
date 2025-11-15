@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ajay Yadav - Digital Product Lead</title>
-    <!-- We will use the Inter font from Google Fonts -->
+    <!-- Use the "Manrope" font for a more stylish, elegant feel -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -15,7 +15,8 @@
     <style>
         /* Custom styles to extend Tailwind */
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            /* Switched to Manrope */
+            font-family: 'Manrope', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             /* Define our dark theme colors */
             --color-bg: #111827; /* Tailwind gray-900 */
             --color-bg-secondary: #1F2937; /* Tailwind gray-800 */
@@ -30,6 +31,8 @@
         body {
             background-color: var(--color-bg);
             color: var(--color-text);
+            /* Prevent horizontal scroll from background glows */
+            overflow-x: hidden;
         }
         
         /* Custom classes for theme colors */
@@ -87,152 +90,160 @@
         html {
             scroll-behavior: smooth;
         }
+
+        /* Nav link styling */
+        .nav-link {
+            padding: 1rem 1.5rem;
+            border-bottom: 4px solid transparent;
+            color: var(--color-text-muted);
+            font-weight: 500;
+            transition: all 0.2s ease-in-out;
+        }
+        .nav-link:hover {
+            color: var(--color-text);
+        }
+        .nav-link.active {
+            color: var(--color-primary);
+            border-bottom-color: var(--color-primary);
+        }
+
+        /* Page section styling */
+        .page-section {
+            padding-top: 2rem; /* Add padding for the sticky nav */
+        }
+
+        /* Glassmorphism card style */
+        .glass-card {
+            background-color: rgba(31, 41, 55, 0.5); /* bg-theme-secondary/50 */
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
     </style>
 </head>
-<body class="bg-theme-bg text-theme-text antialiased">
+<body class="bg-theme-bg text-theme-text antialiased relative overflow-x-hidden">
+
+    <!-- Background Glows -->
+    <div class="fixed top-1/4 left-0 w-96 h-96 md:w-[500px] md:h-[500px] bg-theme-primary/10 rounded-full filter blur-[150px] -z-10 opacity-70"></div>
+    <div class="fixed bottom-1/4 right-0 w-96 h-96 md:w-[500px] md:h-[500px] bg-theme-secondary/10 rounded-full filter blur-[150px] -z-10 opacity-70"></div>
+
+    <!-- ========== NAVIGATION BAR ========== -->
+    <nav class="bg-theme-secondary/80 backdrop-blur-lg sticky top-0 z-50 border-b border-theme-border">
+        <div class="container mx-auto max-w-4xl px-6">
+            <div class="flex justify-center items-center">
+                <a href="#" class="nav-link active" data-target="page-home">Home</a>
+                <a href="#" class="nav-link" data-target="page-career">Career</a>
+                <a href="#" class="nav-link" data-target="page-projects">Projects</a>
+                <a href="#" class="nav-link" data-target="page-education">Education</a>
+            </div>
+        </div>
+    </nav>
 
     <!-- Container -->
-    <div class="container mx-auto max-w-4xl px-6 py-12 md:py-20">
+    <div class="container mx-auto max-w-4xl px-6 py-12 md:py-16">
 
-        <!-- ========== 1. HERO SECTION ========== -->
-        <header class="text-center py-16">
-            <h1 class="text-5xl md:text-6xl font-bold text-white mb-4">Ajay Yadav</h1>
-            <p class="text-2xl md:text-3xl font-medium text-theme-primary mb-8">Digital Product Lead</p>
-            <p class="text-lg md:text-xl text-theme-text max-w-2xl mx-auto mb-10">
-                Data-driven Product Manager with 4+ years of experience leading the end-to-end product lifecycle.
-                I specialize in <strong class="text-theme-secondary">Product Strategy</strong>, <strong class="text-theme-secondary">User Research</strong>, and <strong class="text-theme-secondary">Data Analysis</strong>, and have led major initiatives
-                resulting in <strong class="highlight-text font-semibold">10x growth in MAU</strong> and a <strong class="highlight-text font-semibold">15% boost in operational efficiency</strong>.
-            </p>
-            <!-- CTA Buttons -->
-            <div class="flex justify-center gap-4 flex-wrap">
-                <a href="#projects" class="bg-theme-primary text-white font-semibold px-8 py-3 rounded-full shadow-lg hover:opacity-80 transition-all duration-200 transform hover:-translate-y-0.5">
-                    View My Work
-                </a>
-                <a href="#contact" class="bg-theme-secondary text-white font-semibold px-8 py-3 rounded-full shadow-lg hover:opacity-80 transition-all duration-200 transform hover:-translate-y-0.5">
-                    Get In Touch
-                </a>
-            </div>
-            <!-- Contact Info -->
-            <div class="mt-12 flex justify-center items-center gap-4 md:gap-8 flex-wrap text-theme-muted">
-                <a href="mailto:mycareer.ajay@gmail.com" class="hover:text-theme-primary transition-colors">mycareer.ajay@gmail.com</a>
-                <span class="hidden md:block">|</span>
-                <a href="https://www.linkedin.com/in/ajay-yadav-product/" target="_blank" rel="noopener noreferrer" class="hover:text-theme-primary transition-colors">LinkedIn</a>
-                <span class="hidden md:block">|</span>
-                <span>+91 7042316200</span>
-                <span class="hidden md:block">|</span>
-                <span>Gurugram, IN</span>
-            </div>
-        </header>
-
-        <!-- ========== 2. SKILLS & TOOLS ========== -->
-        <section id="skills" class="py-16">
-            <h2 class="text-4xl font-bold text-white text-center mb-12">Skills & Tools</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                
-                <!-- Skill Card 1 -->
-                <div class="bg-theme-secondary p-6 rounded-lg shadow-lg">
-                    <h4 class="text-xl font-semibold text-theme-secondary mb-3">Product & Strategy</h4>
-                    <ul class="list-disc list-inside text-theme-muted space-y-1">
-                        <li>Product <strong class="text-theme-text">Vision</strong> & <strong class="text-theme-text">Strategy</strong></li>
-                        <li><strong class="text-theme-text">Product Roadmap</strong></li>
-                        <li><strong class="text-theme-text">User Research</strong></li>
-                        <li><strong class="text-theme-text">Go-to-Market (GTM)</strong> Strategy</li>
-                        <li><strong class="text-theme-text">Stakeholder Management</strong></li>
-                        <li><strong class="text-theme-text">AI Product Management</strong></li>
-                    </ul>
+        <!-- ========== 1. HOME SECTION (Landing Page) ========== -->
+        <section id="page-home" class="page-section">
+            
+            <!-- Hero Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center py-12">
+                <!-- Left Column: Photo -->
+                <div class="flex justify-center md:justify-start">
+                    <!-- 
+                      TODO: Ajay, replace this placeholder. 
+                      1. Upload a professional photo to your GitHub repository.
+                      2. Name it 'profile.jpg'.
+                      3. Change the 'src' below from the placehold.co link to just 'profile.jpg'.
+                    -->
+                    <img 
+                      id="profile-img"
+                      src="https://placehold.co/200x200/8B5CF6/1F2937?text=AY&font=manrope" 
+                      alt="Ajay Yadav" 
+                      class="rounded-full w-48 h-48 md:w-56 md:h-56 object-cover border-4 border-theme-primary shadow-lg cursor-pointer transition-all duration-300 hover:scale-105"
+                    >
                 </div>
 
-                <!-- Skill Card 2 -->
-                <div class="bg-theme-secondary p-6 rounded-lg shadow-lg">
-                    <h4 class="text-xl font-semibold text-theme-secondary mb-3">Development & Execution</h4>
-                    <ul class="list-disc list-inside text-theme-muted space-y-1">
-                        <li><strong class="text-theme-text">Agile</strong> (Scrum, Kanban)</li>
-                        <li><strong class="text-theme-text">Scaled Agile (SAFe)</strong></li>
-                        <li><strong class="text-theme-text">Backlog Management</strong></li>
-                        <li><strong class="text-theme-text">User Story</strong> & Criteria</li>
-                        <li><strong class="text-theme-text">Feature Prioritization</strong></li>
-                        <li><strong class="text-theme-text">User Acceptance Testing</strong></li>
-                    </ul>
-                </div>
-
-                <!-- Skill Card 3 -->
-                <div class="bg-theme-secondary p-6 rounded-lg shadow-lg">
-                    <h4 class="text-xl font-semibold text-theme-secondary mb-3">Data & Design</h4>
-                    <ul class="list-disc list-inside text-theme-muted space-y-1">
-                        <li><strong class="text-theme-text">Data Analysis</strong></li>
-                        <li><strong class="text-theme-text">KPI</strong> & Metrics Definition</li>
-                        <li><strong class="text-theme-text">A/B Testing</strong></li>
-                        <li><strong class="text-theme-text">Design Thinking</strong></li>
-                        <li><strong class="text-theme-text">User Journey Mapping</strong></li>
-                        <li><strong class="text-theme-text">Wireframing</strong> & <strong class="text-theme-text">Prototyping</strong></li>
-                    </ul>
-                </div>
-                
-                <!-- Skill Card 4 -->
-                <div class="bg-theme-secondary p-6 rounded-lg shadow-lg">
-                    <h4 class="text-xl font-semibold text-theme-secondary mb-3">Tools & Technical</h4>
-                    <ul class="list-disc list-inside text-theme-muted space-y-1">
-                        <li>Azure DevOps</li>
-                        <li>Jira</li>
-                        <li>Figma</li>
-                        <li>SQL</li>
-                        <li>Power BI</li>
-                        <li>Tableau</li>
-                        <li>Google Analytics</li>
-                        <li>Power Apps</li>
-                    </ul>
+                <!-- Right Column: Info -->
+                <div class="md:col-span-2 text-center md:text-left">
+                    <h1 class="text-5xl md:text-6xl font-bold text-white mb-3">Ajay Yadav</h1>
+                    <p class="text-2xl md:text-3xl font-medium text-theme-primary mb-4">Digital Product Lead</p>
+                    <p class="text-lg text-theme-muted">at <strong class="text-theme-text font-medium">Ramboll India Pvt. Ltd.</strong></p>
                 </div>
             </div>
-        </section>
 
-        <!-- ========== 3. FEATURED PROJECTS ========== -->
-        <section id="projects" class="py-16">
-            <h2 class="text-4xl font-bold text-white text-center mb-12">Featured Projects</h2>
-            <div class="space-y-12">
+            <!-- Value Proposition -->
+            <div class="py-8">
+                <h2 class="text-3xl font-bold text-white text-center mb-6">My Value Proposition</h2>
+                <p class="text-lg md:text-xl text-theme-text max-w-3xl mx-auto text-center">
+                    Data-driven Product Manager with 4+ years of experience leading the end-to-end product lifecycle.
+                    I specialize in <strong class="text-theme-secondary">Product Strategy</strong>, <strong class="text-theme-secondary">User Research</strong>, and <strong class="text-theme-secondary">Data Analysis</strong>, and have led major initiatives
+                    resulting in <strong class="highlight-text font-semibold">10x growth in MAU</strong> and a <strong class="highlight-text font-semibold">15% boost in operational efficiency</strong>.
+                </p>
+            </div>
 
-                <!-- Project Card 1 -->
-                <div class="bg-theme-secondary rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-[1.02]">
-                    <div class="p-8">
-                        <h3 class="text-2xl font-bold text-theme-primary mb-2">Ramboll CAD Menus</h3>
-                        <p class="text-theme-muted mb-4"><strong>Role:</strong> Digital Product Lead</p>
-                        
-                        <h4 class="text-lg font-semibold text-white mt-4 mb-2">The Problem</h4>
-                        <p class="text-theme-muted">Inefficient workflows and significant compliance risks caused by non-standardized CAD tools across the organization.</p>
-                        
-                        <h4 class="text-lg font-semibold text-white mt-4 mb-2">My Solution</h4>
-                        <p class="text-theme-muted">I initiated the project by securing executive buy-in with a data-driven business case. We then built a standardized C# toolset (CAD Menus) with a central configurator to enforce project standards and centralize tools for over 2,500 engineers.</p>
-                        
-                        <div class="mt-6 p-4 rounded-lg bg-emerald-900/50 border border-theme-secondary">
-                            <h4 class="text-lg font-semibold text-theme-secondary">The Outcome</h4>
-                            <p class="text-white">Successfully delivered a <strong class="font-bold">15% efficiency gain</strong>, saving an estimated <strong class="font-bold">22,185 hours annually</strong> for a single business unit.</p>
-                        </div>
+            <!-- Skills & Tools (Moved to Home) -->
+            <section id="skills" class="py-16">
+                <h2 class="text-3xl font-bold text-white text-center mb-12">Skills & Tools</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    
+                    <!-- Skill Card 1: Added glass-card style -->
+                    <div class="glass-card p-6 rounded-lg shadow-lg transition-all duration-300 hover:scale-105">
+                        <h4 class="text-xl font-semibold text-theme-secondary mb-3">Product & Strategy</h4>
+                        <ul class="list-disc list-inside text-theme-muted space-y-1">
+                            <li>Product <strong class="text-theme-text">Vision</strong> & <strong class="text-theme-text">Strategy</strong></li>
+                            <li><strong class="text-theme-text">Product Roadmap</strong></li>
+                            <li><strong class="text-theme-text">User Research</strong></li>
+                            <li><strong class="text-theme-text">Go-to-Market (GTM)</strong> Strategy</li>
+                            <li><strong class="text-theme-text">Stakeholder Management</strong></li>
+                            <li><strong class="text-theme-text">AI Product Management</strong></li>
+                        </ul>
+                    </div>
+
+                    <!-- Skill Card 2: Added glass-card style -->
+                    <div class="glass-card p-6 rounded-lg shadow-lg transition-all duration-300 hover:scale-105">
+                        <h4 class="text-xl font-semibold text-theme-secondary mb-3">Development & Execution</h4>
+                        <ul class="list-disc list-inside text-theme-muted space-y-1">
+                            <li><strong class="text-theme-text">Agile</strong> (Scrum, Kanban)</li>
+                            <li><strong class="text-theme-text">Scaled Agile (SAFe)</strong></li>
+                            <li><strong class="text-theme-text">Backlog Management</strong></li>
+                            <li><strong class="text-theme-text">User Story</strong> & Criteria</li>
+                            <li><strong class="text-theme-text">Feature Prioritization</strong></li>
+                            <li><strong class="text-theme-text">User Acceptance Testing</strong></li>
+                        </ul>
+                    </div>
+
+                    <!-- Skill Card 3: Added glass-card style -->
+                    <div class="glass-card p-6 rounded-lg shadow-lg transition-all duration-300 hover:scale-105">
+                        <h4 class="text-xl font-semibold text-theme-secondary mb-3">Data & Design</h4>
+                        <ul class="list-disc list-inside text-theme-muted space-y-1">
+                            <li><strong class="text-theme-text">Data Analysis</strong></li>
+                            <li><strong class="text-theme-text">KPI</strong> & Metrics Definition</li>
+                            <li><strong class="text-theme-text">A/B Testing</strong></li>
+                            <li><strong class="text-theme-text">Design Thinking</strong></li>
+                            <li><strong class="text-theme-text">User Journey Mapping</strong></li>
+                            <li><strong class="text-theme-text">Wireframing</strong> & <strong class="text-theme-text">Prototyping</strong></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Skill Card 4: Added glass-card style -->
+                    <div class="glass-card p-6 rounded-lg shadow-lg transition-all duration-300 hover:scale-105">
+                        <h4 class="text-xl font-semibold text-theme-secondary mb-3">Tools & Technical</h4>
+                        <ul class="list-disc list-inside text-theme-muted space-y-1">
+                            <li>Azure DevOps</li>
+                            <li>Jira</li>
+                            <li>Figma</li>
+                            <li>SQL</li>
+                            <li>Power BI</li>
+                            <li>Tableau</li>
+                            <li>Google Analytics</li>
+                            <li>Power Apps</li>
+                        </ul>
                     </div>
                 </div>
-
-                <!-- Project Card 2 -->
-                <div class="bg-theme-secondary rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-[1.02]">
-                    <div class="p-8">
-                        <h3 class="text-2xl font-bold text-theme-primary mb-2">Cab-Connect: Ride Comparison App (Personal)</h3>
-                        <p class="text-theme-muted mb-4"><strong>Role:</strong> Product Manager</p>
-                        
-                        <h4 class="text-lg font-semibold text-white mt-4 mb-2">The Problem</h4>
-                        <p class="text-theme-muted">Users waste significant time and money by having to manually open and compare prices and wait times across multiple ride-hailing apps.</p>
-                        
-                        <h4 class="text-lg font-semibold text-white mt-4 mb-2">My Solution</h4>
-                        <p class="text-theme-muted">I conducted user research and interviews to validate the user problem. From there, I designed the end-to-end user experience, creating user journey maps, wireframes, and high-fidelity prototypes, and defined a prioritized backlog.</p>
-                        
-                        <div class="mt-6 p-4 rounded-lg bg-emerald-900/50 border border-theme-secondary">
-                            <h4 class="text-lg font-semibold text-theme-secondary">The Outcome</h4>
-                            <p class="text-white">Produced a complete, <strong class="font-bold">clickable prototype</strong>, a full product specification, and a go-to-market growth strategy built around a <strong class="font-bold">North Star Metric & AARRR framework</strong>.</p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
+            </section>
         </section>
 
-        <!-- ========== 4. CAREER TIMELINE ========== -->
-        <section id="experience" class="py-16">
+        <!-- ========== 2. CAREER TIMELINE SECTION ========== -->
+        <section id="page-career" class="page-section hidden">
             <h2 class="text-4xl font-bold text-white text-center mb-16">Career Timeline</h2>
             <div class="max-w-2xl mx-auto">
                 
@@ -275,38 +286,96 @@
 
             </div>
         </section>
-        
-        <!-- ========== 5. EDUCATION & CERTIFICATIONS ========== -->
-        <section id="education" class="py-16">
-            <h2 class="text-4xl font-bold text-white text-center mb-12">Education & Certifications</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                
-                <!-- Education Card 1 -->
-                <div class="bg-theme-secondary p-6 rounded-lg shadow-lg">
-                    <h4 class="text-lg font-semibold text-white">Post Graduate Certificate in Product Management</h4>
-                    <p class="text-theme-primary font-medium">DUKE Corporate Education, Durham, USA</p>
-                    <p class="text-sm text-theme-muted italic">Specializations: AI Product Management | Growth Product Management</p>
-                </div>
-                
-                <!-- Education Card 2 -->
-                <div class="bg-theme-secondary p-6 rounded-lg shadow-lg">
-                    <h4 class="text-lg font-semibold text-white">M.tech in Production and Industrial Engineering</h4>
-                    <p class="text-theme-primary font-medium">NIT Kurukshetra, Haryana, IN</p>
-                    <p class="text-sm text-theme-muted italic">Grade: 8.55 GPA</p>
+
+        <!-- ========== 3. FEATURED PROJECTS SECTION ========== -->
+        <section id="page-projects" class="page-section hidden">
+            <h2 class="text-4xl font-bold text-white text-center mb-12">Featured Projects</h2>
+            <div class="space-y-12">
+
+                <!-- Project Card 1: Added glass-card style -->
+                <div class="glass-card rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-[1.02]">
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-theme-primary mb-2">Ramboll CAD Menus</h3>
+                        <p class="text-theme-muted mb-4"><strong>Role:</strong> Digital Product Lead</p>
+                        
+                        <h4 class="text-lg font-semibold text-white mt-4 mb-2">The Problem</h4>
+                        <p class="text-theme-muted">Inefficient workflows and significant compliance risks caused by non-standardized CAD tools across the organization.</p>
+                        
+                        <h4 class="text-lg font-semibold text-white mt-4 mb-2">My Solution</h4>
+                        <p class="text-theme-muted">I initiated the project by securing executive buy-in with a data-driven business case. We then built a standardized C# toolset (CAD Menus) with a central configurator to enforce project standards and centralize tools for over 2,500 engineers.</p>
+                        
+                        <!-- Added backdrop-blur-md to outcome box -->
+                        <div class="mt-6 p-4 rounded-lg bg-emerald-900/50 backdrop-blur-md border border-theme-secondary">
+                            <h4 class="text-lg font-semibold text-theme-secondary">The Outcome</h4>
+                            <p class="text-white">Successfully delivered a <strong class="font-bold">15% efficiency gain</strong>, saving an estimated <strong class="font-bold">22,185 hours annually</strong> for a single business unit.</p>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Education Card 3 -->
-                <div class="bg-theme-secondary p-6 rounded-lg shadow-lg">
-                    <h4 class="text-lg font-semibold text-white">B.tech in Mechanical Engineering</h4>
-                    <p class="text-theme-primary font-medium">Maharshi Dayanand University, Haryana, IN</p>
-                    <p class="text-sm text-theme-muted italic">Score: 7.69 GPA</p>
+                <!-- Project Card 2: Added glass-card style -->
+                <div class="glass-card rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-[1.02]">
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-theme-primary mb-2">Cab-Connect: Ride Comparison App (Personal)</h3>
+                        <p class="text-theme-muted mb-4"><strong>Role:</strong> Product Manager</p>
+                        
+                        <h4 class="text-lg font-semibold text-white mt-4 mb-2">The Problem</h4>
+                        <p class="text-theme-muted">Users waste significant time and money by having to manually open and compare prices and wait times across multiple ride-hailing apps.</p>
+                        
+                        <h4 class="text-lg font-semibold text-white mt-4 mb-2">My Solution</h4>
+                        <p class="text-theme-muted">I conducted user research and interviews to validate the user problem. From there, I designed the end-to-end user experience, creating user journey maps, wireframes, and high-fidelity prototypes, and defined a prioritized backlog.</p>
+                        
+                        <!-- Added backdrop-blur-md to outcome box -->
+                        <div class="mt-6 p-4 rounded-lg bg-emerald-900/50 backdrop-blur-md border border-theme-secondary">
+                            <h4 class="text-lg font-semibold text-theme-secondary">The Outcome</h4>
+                            <p class="text-white">Produced a complete, <strong class="font-bold">clickable prototype</strong>, a full product specification, and a go-to-market growth strategy built around a <strong class="font-bold">North Star Metric & AARRR framework</strong>.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        
+        <!-- ========== 4. EDUCATION & CERTIFICATIONS SECTION ========== -->
+        <section id="page-education" class="page-section hidden">
+            <h2 class="text-4xl font-bold text-white text-center mb-16">Education & Certifications</h2>
+            <div class="max-w-2xl mx-auto">
+
+                <!-- Education Timeline Item 1 -->
+                <div class="timeline-item">
+                    <h4 class="text-xl font-bold text-theme-secondary mb-1">Post Graduate Certificate in Product Management</h4>
+                    <p class="text-theme-text font-medium">DUKE Corporate Education, Durham, USA</p>
+                    <p class="text-sm text-theme-muted mb-3">September 2024 - May 2025</p>
+                    <ul class="list-disc list-inside text-theme-muted space-y-2">
+                        <li>Specializations: <strong class="text-theme-text">AI Product Management</strong> | <strong class="text-theme-text">Growth Product Management</strong></li>
+                        <li>Score: <strong class="text-theme-text">95.4%</strong></li>
+                    </ul>
+                </div>
+                
+                <!-- Education Timeline Item 2 -->
+                <div class="timeline-item">
+                    <h4 class="text-xl font-bold text-theme-secondary mb-1">M.tech in Production and Industrial Engineering</h4>
+                    <p class="text-theme-text font-medium">NIT Kurukshetra, Haryana, IN</p>
+                    <p class="text-sm text-theme-muted mb-3">September 2020 - May 2022</p>
+                    <ul class="list-disc list-inside text-theme-muted space-y-2">
+                        <li>Grade: <strong class="text-theme-text">8.55 GPA</strong></li>
+                    </ul>
+                </div>
+
+                <!-- Education Timeline Item 3 -->
+                <div class="timeline-item">
+                    <h4 class="text-xl font-bold text-theme-secondary mb-1">B.tech in Mechanical Engineering</h4>
+                    <p class="text-theme-text font-medium">Maharshi Dayanand University, Haryana, IN</p>
+                    <p class="text-sm text-theme-muted mb-3">August 2014 - May 2018</p>
+                    <ul class="list-disc list-inside text-theme-muted space-y-2">
+                        <li>Score: <strong class="text-theme-text">7.69 GPA</strong></li>
+                    </ul>
                 </div>
 
             </div>
         </section>
 
-        <!-- ========== 6. CONTACT FOOTER ========== -->
-        <footer id="contact" class="text-center py-20 border-t border-theme-border mt-16">
+        <!-- ========== 5. CONTACT FOOTER ========== -->
+        <footer id="contact" class="text-center py-20 border-t border-theme-border mt-16 relative z-10">
             <h2 class="text-4xl font-bold text-white mb-4">Let's Build Something Together</h2>
             <p class="text-lg text-theme-muted max-w-lg mx-auto mb-8">
                 I'm always open to discussing new product challenges, leadership opportunities, or just sharing ideas. Feel free to reach out.
@@ -326,6 +395,72 @@
         </footer>
 
     </div> <!-- End Container -->
+
+    <!-- ========== IMAGE LIGHTBOX (Modal) ========== -->
+    <!-- This is the new HTML for the full-screen image preview -->
+    <div id="image-lightbox" class="fixed inset-0 bg-black/80 backdrop-blur-md z-[60] flex justify-center items-center p-4 hidden cursor-pointer" onclick="this.classList.add('hidden')">
+        <img id="lightbox-img" src="" alt="Ajay Yadav - Profile Photo" class="max-w-[90vw] max-h-[90vh] rounded-lg shadow-2xl">
+    </div>
+
+
+    <!-- ========== JAVASCRIPT FOR TABS ========== -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const pageSections = document.querySelectorAll('.page-section');
+
+            // --- NEW LIGHTBOX SCRIPT ---
+            const profileImg = document.getElementById('profile-img');
+            const lightbox = document.getElementById('image-lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+
+            if (profileImg && lightbox && lightboxImg) {
+                // Open lightbox
+                profileImg.addEventListener('click', (e) => {
+                    e.stopPropagation(); // Prevent click from bubbling up to the lightbox closer
+                    const imgSrc = profileImg.getAttribute('src');
+                    lightboxImg.setAttribute('src', imgSrc);
+                    lightbox.classList.remove('hidden');
+                });
+            }
+            // --- END NEW SCRIPT ---
+
+
+            // Function to switch tabs
+            function showPage(targetId) {
+                // Hide all page sections
+                pageSections.forEach(section => {
+                    section.classList.add('hidden');
+                });
+
+                // Show the target page section
+                const targetPage = document.getElementById(targetId);
+                if (targetPage) {
+                    targetPage.classList.remove('hidden');
+                }
+
+                // Update active state in nav
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('data-target') === targetId) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+
+            // Add click event listeners to nav links
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault(); // Prevent default anchor jump
+                    const targetId = link.getAttribute('data-target');
+                    showPage(targetId);
+                });
+            });
+
+            // Show the home page by default
+            showPage('page-home');
+        });
+    </script>
 
 </body>
 </html>
