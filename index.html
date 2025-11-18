@@ -12,7 +12,31 @@
     <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
+    <!-- Configure Tailwind Theme -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        themeBg: '#111827',
+                        themeSecondaryBg: '#1F2937',
+                        themePrimary: '#8B5CF6',
+                        themeSecondary: '#10B981',
+                        themeText: '#E5E7EB',
+                        themeMuted: '#9CA3AF',
+                        themeBorder: '#374151',
+                    }
+                }
+            }
+        }
+    </script>
+    
     <style>
+        /* --- CRITICAL FIX: Ensure hidden class works even if Tailwind delays --- */
+        .hidden {
+            display: none !important;
+        }
+
         /* Custom styles to extend Tailwind */
         body {
             /* Switched to Jost */
@@ -99,6 +123,7 @@
             transition: color 0.2s ease-in-out;
             position: relative; /* Needed for the pseudo-element */
             border-bottom: none; /* Remove old border */
+            display: inline-block;
         }
         .nav-link:hover {
             color: var(--color-text);
@@ -128,6 +153,7 @@
         /* Page section styling */
         .page-section {
             padding-top: 2rem; /* Add padding for the sticky nav */
+            min-height: 80vh; /* Ensure content takes up space */
         }
 
         /* Glassmorphism card style */
@@ -204,7 +230,7 @@
     <!-- ========== NAVIGATION BAR ========== -->
     <nav class="bg-theme-secondary/80 backdrop-blur-lg sticky top-0 z-50 border-b border-theme-border">
         <div class="container mx-auto max-w-4xl px-6">
-            <div class="flex justify-center items-center">
+            <div class="flex flex-wrap justify-center items-center">
                 <a href="#" class="nav-link active" data-target="page-home">Home</a>
                 <a href="#" class="nav-link" data-target="page-career">Career</a>
                 <a href="#" class="nav-link" data-target="page-projects">Projects</a>
@@ -226,13 +252,14 @@
                 <div class="flex justify-center md:justify-start">
                     <!-- 
                       UPDATE: Changed src to 'profile1.jpeg'
+                      Fixed typo: rounded-x1 -> rounded-xl
                     -->
                     <img 
                       id="profile-img"
                       src="profile1.jpeg" 
                       alt="Ajay Yadav" 
                       onerror="this.src='https://placehold.co/200x200/8B5CF6/1F2937?text=AY&font=jost'"
-                      class="clickable-lightbox rounded-x1 w-48 h-72 md:w-56 md:h-80 object-cover border-0 border-theme-primary shadow-lg cursor-pointer transition-all duration-300 hover:scale-105"
+                      class="clickable-lightbox rounded-xl w-48 h-72 md:w-56 md:h-80 object-cover border-0 border-theme-primary shadow-lg cursor-pointer transition-all duration-300 hover:scale-105"
                     >
                 </div>
 
@@ -250,7 +277,7 @@
                 <h2 class="text-3xl font-bold text-white text-center mb-6">A Product Leader Who Delivers Growth & Efficiency.</h2>
                 <p class="text-lg md:text-xl text-theme-text max-w-3xl mx-auto text-center">
                    With 4+ years of end-to-end <strong class="text-theme-secondary">Product Leadership</strong>, I have a track record of shipping products that move the needle. I led the UI/UX overhaul that resulted in <strong class="text-theme-secondary">10x MAU growth</strong>
-                    and developed the <strong class="text-theme-secondary">GTM strategy</strong> that drove a <strong class="text-theme-secondary">15% boost</strong> in <strong class="text-theme-secondary">operational efficiency.</strong> I thrive on solving complex user problems and delivering measurable value.
+                   and developed the <strong class="text-theme-secondary">GTM strategy</strong> that drove a <strong class="text-theme-secondary">15% boost</strong> in <strong class="text-theme-secondary">operational efficiency.</strong> I thrive on solving complex user problems and delivering measurable value.
                 </p>
             </div>
 
@@ -265,74 +292,74 @@
                         
                         <!-- Tool Logo Item 1: Azure DevOps -->
                         <div class="relative group flex-shrink-0 hover:z-10">
-                            <div class="tool-logo glass-card w-16 h-16 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-200">
+                            <div class="tool-logo glass-card w-16 h-16 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-125">
                                 <!-- UPDATE: Changed src to 'tool-azure.png' -->
-                                <img src="tool-azure.png" alt="Azure DevOps" class="w-full h-full object-cover rounded-full p-3">
+                                <img src="tool-azure.png" alt="Azure DevOps" onerror="this.style.display='none';this.parentNode.innerText='Azure'" class="w-full h-full object-cover rounded-full p-3">
                             </div>
-                            <span class="absolute top-full mt-2 left-1/2 -translate-x-1/2 bg-gray-900 text-white text-xs font-medium px-3 py-1.5 rounded-md opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">Azure DevOps</span>
+                            <span class="absolute top-full mt-2 left-1/2 -translate-x-1/2 bg-gray-900 text-white text-xs font-medium px-3 py-1.5 rounded-md opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-20 whitespace-nowrap">Azure DevOps</span>
                         </div>
                         
                         <!-- Tool Logo Item 2: Jira -->
                         <div class="relative group flex-shrink-0 hover:z-10">
-                            <div class="tool-logo glass-card w-16 h-16 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-200">
+                            <div class="tool-logo glass-card w-16 h-16 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-125">
                                 <!-- UPDATE: Changed src to 'tool-jira.png' -->
-                                <img src="tool-jira.png" alt="Jira" class="w-full h-full object-cover rounded-full p-3">
+                                <img src="tool-jira.png" alt="Jira" onerror="this.style.display='none';this.parentNode.innerText='Jira'" class="w-full h-full object-cover rounded-full p-3">
                             </div>
-                            <span class="absolute top-full mt-2 left-1/2 -translate-x-1/2 bg-gray-900 text-white text-xs font-medium px-3 py-1.5 rounded-md opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">Jira</span>
+                            <span class="absolute top-full mt-2 left-1/2 -translate-x-1/2 bg-gray-900 text-white text-xs font-medium px-3 py-1.5 rounded-md opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-20 whitespace-nowrap">Jira</span>
                         </div>
 
                         <!-- Tool Logo Item 3: Figma -->
                         <div class="relative group flex-shrink-0 hover:z-10">
-                            <div class="tool-logo glass-card w-16 h-16 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-200">
+                            <div class="tool-logo glass-card w-16 h-16 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-125">
                                 <!-- UPDATE: Changed src to 'tool-figma.png' -->
-                                <img src="tool-figma.png" alt="Figma" class="w-full h-full object-cover rounded-full p-3">
+                                <img src="tool-figma.png" alt="Figma" onerror="this.style.display='none';this.parentNode.innerText='Figma'" class="w-full h-full object-cover rounded-full p-3">
                             </div>
-                            <span class="absolute top-full mt-2 left-1/2 -translate-x-1/2 bg-gray-900 text-white text-xs font-medium px-3 py-1.5 rounded-md opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">Figma</span>
+                            <span class="absolute top-full mt-2 left-1/2 -translate-x-1/2 bg-gray-900 text-white text-xs font-medium px-3 py-1.5 rounded-md opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-20 whitespace-nowrap">Figma</span>
                         </div>
 
                         <!-- Tool Logo Item 4: SQL -->
                         <div class="relative group flex-shrink-0 hover:z-10">
-                            <div class="tool-logo glass-card w-16 h-16 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-200">
+                            <div class="tool-logo glass-card w-16 h-16 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-125">
                                 <!-- UPDATE: Changed src to 'tool-sql.png' -->
-                                <img src="tool-sql.png" alt="SQL" class="w-full h-full object-cover rounded-full p-3">
+                                <img src="tool-sql.png" alt="SQL" onerror="this.style.display='none';this.parentNode.innerText='SQL'" class="w-full h-full object-cover rounded-full p-3">
                             </div>
-                            <span class="absolute top-full mt-2 left-1/2 -translate-x-1/2 bg-gray-900 text-white text-xs font-medium px-3 py-1.5 rounded-md opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">SQL</span>
+                            <span class="absolute top-full mt-2 left-1/2 -translate-x-1/2 bg-gray-900 text-white text-xs font-medium px-3 py-1.5 rounded-md opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-20 whitespace-nowrap">SQL</span>
                         </div>
 
                         <!-- Tool Logo Item 5: Miro -->
                         <div class="relative group flex-shrink-0 hover:z-10">
-                            <div class="tool-logo glass-card w-16 h-16 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-200">
+                            <div class="tool-logo glass-card w-16 h-16 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-125">
                                 <!-- UPDATE: Changed src to 'tool-miro.png' -->
-                                <img src="tool-miro.png" alt="Miro" class="w-full h-full object-cover rounded-full p-3">
+                                <img src="tool-miro.png" alt="Miro" onerror="this.style.display='none';this.parentNode.innerText='Miro'" class="w-full h-full object-cover rounded-full p-3">
                             </div>
-                            <span class="absolute top-full mt-2 left-1/2 -translate-x-1/2 bg-gray-900 text-white text-xs font-medium px-3 py-1.5 rounded-md opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">Miro</span>
+                            <span class="absolute top-full mt-2 left-1/2 -translate-x-1/2 bg-gray-900 text-white text-xs font-medium px-3 py-1.5 rounded-md opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-20 whitespace-nowrap">Miro</span>
                         </div>
 
                         <!-- Tool Logo Item 6: Microsoft 365 -->
                         <div class="relative group flex-shrink-0 hover:z-10">
-                            <div class="tool-logo glass-card w-16 h-16 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-200">
+                            <div class="tool-logo glass-card w-16 h-16 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-125">
                                 <!-- UPDATE: Changed src to 'tool-M365.png' -->
-                                <img src="tool-M365.png" alt="Microsoft 365" class="w-full h-full object-cover rounded-full p-3">
+                                <img src="tool-M365.png" alt="Microsoft 365" onerror="this.style.display='none';this.parentNode.innerText='M365'" class="w-full h-full object-cover rounded-full p-3">
                             </div>
-                            <span class="absolute top-full mt-2 left-1/2 -translate-x-1/2 bg-gray-900 text-white text-xs font-medium px-3 py-1.5 rounded-md opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">Microsoft 365</span>
+                            <span class="absolute top-full mt-2 left-1/2 -translate-x-1/2 bg-gray-900 text-white text-xs font-medium px-3 py-1.5 rounded-md opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-20 whitespace-nowrap">Microsoft 365</span>
                         </div>
 
                         <!-- Tool Logo Item 7: Google Analytics -->
                         <div class="relative group flex-shrink-0 hover:z-10">
-                            <div class="tool-logo glass-card w-16 h-16 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-200">
+                            <div class="tool-logo glass-card w-16 h-16 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-125">
                                 <!-- UPDATE: Changed src to 'tool-analytics.png' -->
-                                <img src="tool-analytics.png" alt="Google Analytics" class="w-full h-full object-cover rounded-full p-3">
+                                <img src="tool-analytics.png" alt="Google Analytics" onerror="this.style.display='none';this.parentNode.innerText='GA'" class="w-full h-full object-cover rounded-full p-3">
                             </div>
-                            <span class="absolute top-full mt-2 left-1/2 -translate-x-1/2 bg-gray-900 text-white text-xs font-medium px-3 py-1.5 rounded-md opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">Google Analytics</span>
+                            <span class="absolute top-full mt-2 left-1/2 -translate-x-1/2 bg-gray-900 text-white text-xs font-medium px-3 py-1.5 rounded-md opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-20 whitespace-nowrap">Google Analytics</span>
                         </div>
 
                         <!-- Tool Logo Item 8: Power Apps -->
                         <div class="relative group flex-shrink-0 hover:z-10">
-                            <div class="tool-logo glass-card w-16 h-16 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-200">
+                            <div class="tool-logo glass-card w-16 h-16 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-125">
                                 <!-- UPDATE: Changed src to 'tool-powerapps.png' -->
-                                <img src="tool-powerapps.png" alt="Power Apps" class="w-full h-full object-cover rounded-full p-3">
+                                <img src="tool-powerapps.png" alt="Power Apps" onerror="this.style.display='none';this.parentNode.innerText='PowerApps'" class="w-full h-full object-cover rounded-full p-3">
                             </div>
-                            <span class="absolute top-full mt-2 left-1/2 -translate-x-1/2 bg-gray-900 text-white text-xs font-medium px-3 py-1.5 rounded-md opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">Power Apps</span>
+                            <span class="absolute top-full mt-2 left-1/2 -translate-x-1/2 bg-gray-900 text-white text-xs font-medium px-3 py-1.5 rounded-md opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-20 whitespace-nowrap">Power Apps</span>
                         </div>
                     </div>
                 </div>
@@ -374,7 +401,7 @@
                             <li><strong class="text-theme-text">User Journey Mapping</strong></li>
                             <li><strong class="text-theme-text">User Personas</strong></li>
                             <li><strong class="text-theme-text">Information Architecture</strong></li>
-                            <li><strong class="text-theme-text">Interection Design</strong></li>
+                            <li><strong class="text-theme-text">Interaction Design</strong></li>
                             <li>UI/UX Principles</li>
                         </ul>
                     </div>
@@ -661,8 +688,8 @@
                 <!-- NEW: Added 'animate-on-scroll' -->
                 <div class="glass-card rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-[1.03] animate-on-scroll">
                     <div class="p-8">
-                        <!-- LINK ADDED -->
-                        <a href="httpsIs://drive.google.com/file/d/15o5PJ1GNz5M6bl1_LmRlO_Dexq5U5UJL/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+                        <!-- LINK ADDED - Fixed Typo -->
+                        <a href="https://drive.google.com/file/d/15o5PJ1GNz5M6bl1_LmRlO_Dexq5U5UJL/view?usp=sharing" target="_blank" rel="noopener noreferrer">
                             <h3 class="text-2xl font-bold text-theme-primary mb-2 linkable-title">Ramboll CAD Menus</h3>
                         </a>
                         <p class="text-theme-muted mb-4"><strong>Role:</strong> Digital Product Lead</p>
@@ -684,8 +711,8 @@
                 <!-- NEW: Added 'animate-on-scroll' with inline delay -->
                 <div class="glass-card rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-[1.03] animate-on-scroll" style="transition-delay: 200ms;">
                     <div class="p-8">
-                        <!-- LINK ADDED -->
-                        <a href="httpsIs://docs.google.com/presentation/d/1g6Aj1pqLMxpTy2tPgipU5yFgE2N_AcKXbMQ2fBuJhYs/edit?slide=id.p1#slide=id.p1" target="_blank" rel="noopener noreferrer">
+                        <!-- LINK ADDED - Fixed typo -->
+                        <a href="https://docs.google.com/presentation/d/1g6Aj1pqLMxpTy2tPgipU5yFgE2N_AcKXbMQ2fBuJhYs/edit?slide=id.p1#slide=id.p1" target="_blank" rel="noopener noreferrer">
                             <h3 class="text-2xl font-bold text-theme-primary mb-2 linkable-title">Cab-Connect: Ride Comparison App (Personal)</h3>
                         </a>
                         <p class="text-theme-muted mb-4"><strong>Role:</strong> Product Manager</p>
@@ -716,7 +743,7 @@
                         mycareer.ajay@gmail.com
                     </a>
                     <!-- CORRECTED LINKEDIN URL -->
-                    <a href="httpshttps://www.linkedin.com/in/ajay-yadav-pm/" target="_blank" rel="noopener noreferrer" class="text-lg font-medium text-theme-primary hover:text-theme-secondary transition-colors">
+                    <a href="https://www.linkedin.com/in/ajay-yadav-pm/" target="_blank" rel="noopener noreferrer" class="text-lg font-medium text-theme-primary hover:text-theme-secondary transition-colors">
                         LinkedIn
                     </a>
                     <a href="tel:+917042316200" class="text-lg font-medium text-theme-primary hover:text-theme-secondary transition-colors">
@@ -736,8 +763,8 @@
 
                 <!-- Education Timeline Item 1 -->
                 <div class="timeline-item">
-                    <!-- LINK ADDED -->
-                    <a href="httpsIs://www.credential.net/5d1895be-8a81-484e-b321-f9327ea8c4b9#acc.gSXbcQEH" target="_blank" rel="noopener noreferrer">
+                    <!-- LINK ADDED - Fixed Typo -->
+                    <a href="https://www.credential.net/5d1895be-8a81-484e-b321-f9327ea8c4b9#acc.gSXbcQEH" target="_blank" rel="noopener noreferrer">
                         <h4 class="text-xl font-bold text-theme-secondary mb-1 linkable-title">Post Graduate Certificate in Product Management</h4>
                     </a>
                     <p class="text-theme-text font-medium">DUKE Corporate Education, Durham, USA</p>
@@ -750,8 +777,8 @@
                 
                 <!-- Education Timeline Item 2 -->
                 <div class="timeline-item">
-                    <!-- LINK ADDED -->
-                    <a href="httpsIs://drive.google.com/file/d/1u5zcUDbun3ZwA2DFkXiXjL05MwiksDcT/view?usp=drivesdk" target="_blank" rel="noopener noreferrer">
+                    <!-- LINK ADDED - Fixed Typo -->
+                    <a href="https://drive.google.com/file/d/1u5zcUDbun3ZwA2DFkXiXjL05MwiksDcT/view?usp=drivesdk" target="_blank" rel="noopener noreferrer">
                         <h4 class="text-xl font-bold text-theme-secondary mb-1 linkable-title">M.tech in Production and Industrial Engineering</h4>
                     </a>
                     <p class="text-theme-text font-medium">NIT Kurukshetra, Haryana, IN</p>
@@ -763,8 +790,8 @@
 
                 <!-- Education Timeline Item 3 -->
                 <div class="timeline-item">
-                    <!-- LINK ADDED -->
-                    <a href="httpsIS://drive.google.com/file/d/1MbMJks2T6aRkGF-vmCtJDkhQpDnycUeP/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+                    <!-- LINK ADDED - Fixed Typo -->
+                    <a href="https://drive.google.com/file/d/1MbMJks2T6aRkGF-vmCtJDkhQpDnycUeP/view?usp=sharing" target="_blank" rel="noopener noreferrer">
                         <h4 class="text-xl font-bold text-theme-secondary mb-1 linkable-title">B.tech in Mechanical Engineering</h4>
                     </a>
                     <p class="text-theme-text font-medium">Maharshi Dayanand University, Haryana, IN</p>
@@ -786,7 +813,7 @@
                         mycareer.ajay@gmail.com
                     </a>
                     <!-- CORRECTED LINKEDIN URL -->
-                    <a href="httpshttps://www.linkedin.com/in/ajay-yadav-pm/" target="_blank" rel="noopener noreferrer" class="text-lg font-medium text-theme-primary hover:text-theme-secondary transition-colors">
+                    <a href="https://www.linkedin.com/in/ajay-yadav-pm/" target="_blank" rel="noopener noreferrer" class="text-lg font-medium text-theme-primary hover:text-theme-secondary transition-colors">
                         LinkedIn
                     </a>
                     <a href="tel:+917042316200" class="text-lg font-medium text-theme-primary hover:text-theme-secondary transition-colors">
